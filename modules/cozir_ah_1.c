@@ -5,8 +5,8 @@
 *  Author: GroundLayer
 */
 
-#include "modules/drivers/cozir_ah_1.h"
-#include "modules/modules/cozir_ah_1.h"
+#include "../drivers/cozir_ah_1.h"
+#include "./cozir_ah_1.h"
 
 #include "registrar/registrar.h"
 #include "tasks/modules.h"

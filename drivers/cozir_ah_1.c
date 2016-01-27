@@ -5,7 +5,7 @@
  *  Author: GroundLayer
  */ 
 
-#include "modules/drivers/cozir_ah_1.h"
+#include "./cozir_ah_1.h"
 #include "string.h"
 
 void COZIR_buffer_received(struct usart_module *const module);
