@@ -5,8 +5,8 @@
 *  Author: GroundLayer
 */
 
-#include "modules/drivers/cozir_ah_1.h"
-#include "modules/modules/cozir_ah_1.h"
+#include "modules/modules/rotonde-samd21-cozir-ah1/drivers/cozir_ah_1.h"
+#include "modules/modules/rotonde-samd21-cozir-ah1/modules/cozir_ah_1.h"
 
 #include "registrar/registrar.h"
 #include "tasks/modules.h"
@@ -18,7 +18,7 @@
 #define MODULE_HUMIDITY "humidity"
 #define MODULE_CO2 "co2"
 
-#define N_COZIR 3
+#define N_COZIR 1
 
 struct usart_module COZIR_uart[N_COZIR];
 
@@ -39,25 +39,6 @@ void COZIR_AH_1_module_init(void){
 	usart_conf.pinmux_pad3 = PINMUX_PA19C_SERCOM1_PAD3;
 	usart_conf.baudrate    = 9600;
 	COZIR_uart[0] = COZIR_init(usart_conf, SERCOM1);
-	
-	usart_get_config_defaults(&usart_conf);
-	usart_conf.mux_setting = USART_RX_3_TX_2_XCK_3;
-	usart_conf.pinmux_pad0 = PINMUX_UNUSED;
-	usart_conf.pinmux_pad1 = PINMUX_UNUSED;
-	usart_conf.pinmux_pad2 = PINMUX_PB10D_SERCOM4_PAD2;
-	usart_conf.pinmux_pad3 = PINMUX_PB11D_SERCOM4_PAD3;
-	usart_conf.baudrate    = 9600;
-	COZIR_uart[1] = COZIR_init(usart_conf, SERCOM4);
-	
-	usart_get_config_defaults(&usart_conf);
-	usart_conf.mux_setting = USART_RX_3_TX_2_XCK_3;
-	usart_conf.pinmux_pad0 = PINMUX_UNUSED;
-	usart_conf.pinmux_pad1 = PINMUX_UNUSED;
-	usart_conf.pinmux_pad2 = PINMUX_PA20C_SERCOM5_PAD2;
-	usart_conf.pinmux_pad3 = PINMUX_PA21C_SERCOM5_PAD3;
-	usart_conf.baudrate    = 9600;
-	COZIR_uart[2] = COZIR_init(usart_conf, SERCOM5);
-	
 	
 	COZIR_AH_1_def = register_definition(EVENT , MODULE_NAME , COZIR_AH_1_names ,COZIR_AH_1_types , MODULE_DATA_SIZE , NULL, COZIR_AH_1_tick , 5000);
 }

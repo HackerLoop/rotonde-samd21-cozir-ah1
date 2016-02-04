@@ -5,7 +5,7 @@
  *  Author: GroundLayer
  */ 
 
-#include "modules/drivers/cozir_ah_1.h"
+#include "cozir_ah_1.h"
 #include "string.h"
 
 static 	uint8_t command[5] = "K 2\r\n";
